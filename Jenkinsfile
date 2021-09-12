@@ -13,7 +13,7 @@ pipeline {
        maven "MAVEN_HOME"
     }
 environment {
-registry = "suren67/samplewebapp"
+registry = "sreeteja07/samplewebapp"
 registryCredential = 'dockerhub_id'
 dockerImage = ''
 }
@@ -21,7 +21,7 @@ dockerImage = ''
       stage('checkout') {
            steps {
              
-                git branch: 'master', url: 'https://github.com/suren673/CI-CD-using-Docker.git'
+                git branch: 'master', url: 'https://github.com/sreetejaK/CI-CD-using-Docker.git'
              
           }
         }
@@ -65,7 +65,7 @@ dockerImage.push()
             steps 
 			{
 				
-                sh 'docker run -d -p 8004:8080 suren67/samplewebapp'
+                sh 'docker run -d -p 8004:8080 sreeteja07/samplewebapp'
  
             }
         }
