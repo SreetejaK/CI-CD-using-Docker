@@ -60,16 +60,16 @@ dockerImage.push()
           }
         }
      
-      stage('Run Docker container on Jenkins Agent') {
+     /* stage('Run Docker container on Jenkins Agent') {
              
             steps 
 			{
 				
-                //sh 'docker run -d -p 8005:8080 sreeteja07/samplewebapp'
+                sh 'docker run -d -p 8005:8080 sreeteja07/samplewebapp'
  
             }
         }
-/* stage('Run Docker container on remote hosts') {
+ stage('Run Docker container on remote hosts') {
              
             steps {
                 sh "docker -H ssh://jenkins@172.31.28.25 run -d -p 8003:8080 nikhilnidhi/samplewebapp"
