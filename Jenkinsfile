@@ -1,45 +1,30 @@
-/*pipeline {
-    agent any
-	
-	  tools
-    {
-       maven "MAVEN_HOME"
-    }*/
 pipeline {
-	agent any
-	
-	  tools
+    agent any
+    
+      tools
     {
        maven "MAVEN_HOME"
     }
-environment {
-registry = "sreeteja07/samplewebapp"
-registryCredential = 'dockerhub_id'
-dockerImage = ''
-}
  stages {
       stage('checkout') {
            steps {
              
-                git branch: 'master', url: 'https://github.com/sreetejaK/CI-CD-using-Docker.git'
+                git branch: 'master', url: 'https://github.com/SreetejaK/CI-CD-using-Docker.git'
              
           }
         }
-	 stage('Execute Maven') {
+     stage('Execute Maven') {
            steps {
              
                 sh 'mvn package'             
           }
         }
         
-
-  stage('Docker Build and Tag') {
+   stage('Docker Build and Tag') {
            steps {
-              script {
-		dockerImage = docker.build registry + ":$BUILD_NUMBER"
-		}
-                //sh 'docker build -t samplewebapp:latest .' 
-                //sh 'docker tag samplewebapp suren67/samplewebapp:latest'
+              
+                sh 'docker build -t samplewebapp:latest .' 
+                sh 'docker tag samplewebapp sreeteja07/samplewebapp:latest'
                 //sh 'docker tag samplewebapp nikhilnidhi/samplewebapp:$BUILD_NUMBER'
                
           }
@@ -48,14 +33,10 @@ dockerImage = ''
   stage('Publish image to Docker Hub') {
           
             steps {
-        /*withDockerRegistry([ credentialsId: "dockerhub_id", url: "" ]) {
-          sh  'docker push suren67/samplewebapp:latest'
-            }*/
-		    script {
-docker.withRegistry( '', registryCredential ) {
-dockerImage.push()
-}
-}
+        withDockerRegistry([ credentialsId: "dockerhub_id", url: "" ]) {
+          sh  'docker push sreeteja07/samplewebapp:latest'
+		 //  sh  'docker push nikhilnidhi/samplewebapp:$BUILD_NUMBER' 
+        }
                   
           }
         }
@@ -63,9 +44,8 @@ dockerImage.push()
       stage('Run Docker container on Jenkins Agent') {
              
             steps 
-			{
-				
-                sh 'docker run -d -p 8004:8080 sreeteja07/samplewebapp'
+            {
+                sh "docker run -d -p 8003:8080 sreeteja07/samplewebapp"
  
             }
         }
@@ -76,6 +56,3 @@ dockerImage.push()
  
             }
         }*/
-    }
-	}
-    
