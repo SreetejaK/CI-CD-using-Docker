@@ -65,7 +65,7 @@ dockerImage.push()
             steps 
 			{
 				
-                sh 'docker run -d -p 8005:8080 sreeteja07/samplewebapp'
+                //sh 'docker run -d -p 8005:8080 sreeteja07/samplewebapp'
  
             }
         }
