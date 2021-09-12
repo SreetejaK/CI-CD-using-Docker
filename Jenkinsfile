@@ -49,6 +49,8 @@ pipeline {
  
             }
         }
+ }
+}
 /* stage('Run Docker container on remote hosts') {
              
             steps {
