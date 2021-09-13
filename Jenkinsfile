@@ -48,14 +48,14 @@ dockerImage = ''
   stage('Publish image to Docker Hub') {
           
             steps {
-        /*withDockerRegistry([ credentialsId: "dockerhub_id", url: "" ]) {
-          sh  'docker push suren67/samplewebapp:latest'
-            }*/
-		    script {
+        withDockerRegistry([ credentialsId: "dockerhub_id", url: "" ]) {
+          sh  'docker push sreeteja07/samplewebapp:latest'
+            }
+		    /*script {
 docker.withRegistry( '', registryCredential ) {
 dockerImage.push()
 }
-}
+}*/
                   
           }
         }
