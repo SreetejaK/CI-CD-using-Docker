@@ -29,7 +29,7 @@ dockerImage = ''
            steps {
              
                 sh 'mvn package'
-		   sh 'mvn compile jib'
+		   sh 'mvn compile jib:build'
           }
         }
         
