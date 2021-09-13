@@ -30,7 +30,7 @@ dockerImage = ''
              
                 /*sh 'mvn package'*/
 		   withDockerRegistry([ credentialsId: "dockerhub_id", url: "" ]){
-		   sh 'mvn clean compile jib:build'
+		   sh 'mvn compile jib:build'
 		   }
 	   }
           }
