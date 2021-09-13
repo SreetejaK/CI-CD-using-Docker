@@ -28,8 +28,10 @@ dockerImage = ''
 	 stage('Execute Maven') {
            steps {
              
-                sh 'mvn package'
+                /*sh 'mvn package'*/
+		   withDockerRegistry([ credentialsId: "dockerhub_id", url: "" ]){
 		   sh 'mvn compile jib:build'
+		   }
           }
         }
         
@@ -46,12 +48,12 @@ dockerImage = ''
           }
         }*/
      
-  stage('Publish image to Docker Hub') {
+  /*stage('Publish image to Docker Hub') {
           
             steps {
         withDockerRegistry([ credentialsId: "dockerhub_id", url: "" ]) {
           sh  'docker push sreeteja07/samplewebapp:latest'
-            }
+            }*/
 		    /*script {
 docker.withRegistry( '', registryCredential ) {
 dockerImage.push()
