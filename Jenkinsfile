@@ -32,6 +32,7 @@ dockerImage = ''
 		   withDockerRegistry([ credentialsId: "dockerhub_id", url: "" ]){
 		   sh 'mvn compile jib:build'
 		   }
+	   }
           }
         }
         
@@ -58,12 +59,12 @@ dockerImage = ''
 docker.withRegistry( '', registryCredential ) {
 dockerImage.push()
 }
-}*/
+}
                   
           }
         }
      
-     /* stage('Run Docker container on Jenkins Agent') {
+     stage('Run Docker container on Jenkins Agent') {
              
             steps 
 			{
@@ -79,5 +80,4 @@ dockerImage.push()
  
             }
         }*/
-    }
-	}
+ }
