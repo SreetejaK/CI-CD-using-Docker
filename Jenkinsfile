@@ -33,7 +33,7 @@ dockerImage = ''
         }
         
 
-  stage('Docker Build and Tag') {
+  /*stage('Docker Build and Tag') {
            steps {
               script {
 		dockerImage = docker.build registry + ":$BUILD_NUMBER"
@@ -43,7 +43,7 @@ dockerImage = ''
                 //sh 'docker tag samplewebapp nikhilnidhi/samplewebapp:$BUILD_NUMBER'
                
           }
-        }
+        }*/
      
   stage('Publish image to Docker Hub') {
           
